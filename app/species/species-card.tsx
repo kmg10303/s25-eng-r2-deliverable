@@ -147,7 +147,7 @@ export default function SpeciesCard({ species }: { species: Species }) {
     defaultValues: {
       scientific_name: species.scientific_name || "",
       common_name: species.common_name || "",
-      kingdom: species.kingdom || "",
+      kingdom: species.kingdom || "Animalia",
       total_population: species.total_population ?? undefined,
       image: species.image || "",
       description: species.description || "",

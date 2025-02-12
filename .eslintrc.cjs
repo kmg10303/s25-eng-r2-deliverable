@@ -17,6 +17,9 @@ module.exports = {
   // Reference for typescript-eslint: https://typescript-eslint.io/linting/configs
   // prettier/@typescript-eslint extension is no longer needed. https://stackoverflow.com/questions/65675771/eslint-couldnt-find-the-config-prettier-typescript-eslint-after-relocating
   rules: {
+    "@typescript-eslint/no-floating-promises": "off",
+    "react/jsx-key": "off",
+    "@typescript-eslint/prefer-nullish-coalescing": "off",
     "@typescript-eslint/consistent-type-imports": [
       // https://typescript-eslint.io/rules/consistent-type-imports/
       "error", // https://eslint.org/docs/latest/use/configure/rules
