@@ -47,7 +47,7 @@ const speciesSchema = z.object({
     .string()
     .optional()
     // Transform empty string or only whitespace input to null before form submission, and trim whitespace otherwise
-    .transform((val) => (!val || val.trim() === "" ? null : val.trim())),
+    .transform((val) => (!val || val.trim() === "" ? "" : val.trim())),
   kingdom: kingdoms.optional(),
   total_population: z.number().int().positive().min(1).optional(),
   image: z
@@ -55,12 +55,12 @@ const speciesSchema = z.object({
     .url()
     .optional()
     // Transform empty string or only whitespace input to null before form submission, and trim whitespace otherwise
-    .transform((val) => (!val || val.trim() === "" ? null : val.trim())),
+    .transform((val) => (!val || val.trim() === "" ? "" : val.trim())),
   description: z
     .string()
     .optional()
     // Transform empty string or only whitespace input to null before form submission, and trim whitespace otherwise
-    .transform((val) => (!val || val.trim() === "" ? null : val.trim())),
+    .transform((val) => (!val || val.trim() === "" ? "" : val.trim())),
 });
 
 type FormData = z.infer<typeof speciesSchema>;
@@ -148,7 +148,7 @@ export default function SpeciesCard({ species }: { species: Species }) {
       scientific_name: species.scientific_name || "",
       common_name: species.common_name || "",
       kingdom: species.kingdom || "",
-      total_population: species.total_population || "",
+      total_population: species.total_population ?? undefined,
       image: species.image || "",
       description: species.description || "",
     },
@@ -234,7 +234,7 @@ export default function SpeciesCard({ species }: { species: Species }) {
                         <FormItem>
                           <FormLabel>Edit Common Name</FormLabel>
                           <FormControl>
-                            <Input defaultValue={species.common_name} {...field} />
+                            <Input defaultValue={species.common_name || ""} {...field} />
                           </FormControl>
                           <FormMessage />
                         </FormItem>
@@ -273,7 +273,7 @@ export default function SpeciesCard({ species }: { species: Species }) {
                         <FormItem>
                           <FormLabel>Edit Population</FormLabel>
                           <Input
-                            defaultValue={species.total_population}
+                            defaultValue={species.total_population || ""}
                             type="number"
                             onChange={(event) => field.onChange(+event.target.value)}
                           />
@@ -288,7 +288,7 @@ export default function SpeciesCard({ species }: { species: Species }) {
                         <FormItem>
                           <FormLabel>Edit Image</FormLabel>
                           <FormControl>
-                            <Input defaultValue={species.image} {...field} />
+                            <Input defaultValue={species.image || ""} {...field} />
                           </FormControl>
                           <FormMessage />
                         </FormItem>
@@ -301,7 +301,7 @@ export default function SpeciesCard({ species }: { species: Species }) {
                         <FormItem>
                           <FormLabel>Edit Description</FormLabel>
                           <FormControl>
-                            <Input defaultValue={species.description} {...field} />
+                            <Input defaultValue={species.description || ""} {...field} />
                           </FormControl>
                           <FormMessage />
                         </FormItem>

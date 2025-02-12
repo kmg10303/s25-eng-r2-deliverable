@@ -4,6 +4,7 @@
     "As of Jul 11, when using Prettier v3 and prettier-plugin-tailwindcss together, third party plugin compatibility has been disabled temporarily. This means Svelte, Astro, etc. are not supported. This may not be an issue with more recent updates. Read more here: https://github.com/tailwindlabs/prettier-plugin-tailwindcss/issues/176"
   ],
   "name": "starter-project-2023-v2",
+  "homepage": "http://kmg10303.github.io/t4sgs25",
   "version": "0.1.0",
   "private": true,
   "type": "module",
@@ -17,7 +18,9 @@
     "prettier:fix": "npm run prettier -- --write",
     "format": "npm run prettier:fix && npm run lint:fix",
     "_types": "cross-env-shell \"supabase gen types typescript --db-url $SECRET_SUPABASE_CONNECTION_STRING > ./lib/schema.ts && prettier lib/schema.ts --write\"",
-    "types": "dotenv -- npm run _types"
+    "types": "dotenv -- npm run _types",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.3.2",
@@ -62,6 +65,7 @@
     "eslint": "^8.56.0",
     "eslint-config-next": "^14.0.4",
     "eslint-config-prettier": "^9.1.0",
+    "gh-pages": "^6.3.0",
     "postcss": "^8.4.32",
     "prettier": "^3.1.1",
     "prettier-plugin-organize-imports": "^3.2.4",
