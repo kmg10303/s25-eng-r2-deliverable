@@ -10,6 +10,7 @@ on the client-side to correctly match component state and props should the order
 React server components don't track state between rerenders, so leaving the uniquely identified components (e.g. SpeciesCard)
 can cause errors with matching props and state in child components if the list order changes.
 */
+// import Comment from "@/app/species/comment";
 import { Icons } from "@/components/icons";
 import { Button } from "@/components/ui/button";
 import {
@@ -33,7 +34,6 @@ import { useRouter } from "next/navigation";
 import { useEffect, useState, type BaseSyntheticEvent } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
-import Comment from "./comment";
 
 const kingdoms = z.enum(["Animalia", "Plantae", "Fungi", "Protista", "Archaea", "Bacteria"]);
 
@@ -175,7 +175,7 @@ export default function SpeciesCard({ species }: { species: Species }) {
             </DialogTrigger>
             <div className="float-right flex">
               {/* COMMENTS DIALOG */}
-              <Comment speciesId={species.id}></Comment>
+              {/* <Comment speciesId={species.id}></Comment> */}
               {/* END COMMENTS DIALOG */}
             </div>
           </div>
